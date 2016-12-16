@@ -19,9 +19,9 @@
 <div class="topbar-wrap white">
     <div class="topbar-inner clearfix">
         <div class="topbar-logo-wrap clearfix">
-            <h1 class="topbar-logo none"><a href="index.html" class="navbar-brand">后台管理</a></h1>
+            <h1 class="topbar-logo none"><a href="index.php" class="navbar-brand">后台管理</a></h1>
             <ul class="navbar-list clearfix">
-                <li><a class="on" href="index.html">首页</a></li>
+                <li><a class="on" href="index.php">首页</a></li>
                 <li><a href="#" target="_blank">网站首页</a></li>
             </ul>
         </div>
@@ -75,6 +75,7 @@
                     <th style="width: 100px;">阅读量</th>
                     <th style="width: 100px;">收获的赞</th>
                     <th style="width: 100px;">发布时间</th>
+                    <th style="width: 100px">删除</th>
 
                 </tr>
                 <?php 
@@ -97,6 +98,7 @@
                      <td style="width: 100px;text-align: center;"><label><?php echo $row["clicked"] ?></label></td>
                      <td style="width: 100px;text-align: center;"><label><?php echo $row["beliked"] ?></label></td>
                      <td style="width: 100px;text-align: center;"><label><?php echo $row["publish_time"] ?> </label></td>
+                     <td style="width: 100px;text-align: center;"><a href="delete.php?article_id=<?php echo $row["article_id"] ?>">删除</a></td>
                  </tr>
                  <?php 
                 }

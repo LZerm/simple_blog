@@ -1,7 +1,7 @@
 <?php 
 	header("Content-type:text/html;charset=utf-8");
 	include_once("functions/database.php");
-
+    session_start();
 	get_connection();
 	$name = $_POST["username"];
 	$pwd = $_POST["pwd"];
@@ -10,7 +10,8 @@
 
 	$result = mysql_query($sql);
 	if(mysql_num_rows($result) > 0){
-		header("Location:index.html");
+	    $_SESSION["admin_name"]=$name;
+		header("Location:index.php");
 	}
 	else{
 		$message = "error";

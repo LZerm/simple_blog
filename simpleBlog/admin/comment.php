@@ -59,6 +59,42 @@
             <span>所有评论</span>
             </div>
         </div>
+
+        <div class="result-wrap">
+            <div class="result-content">
+                <table>
+                    <tr>
+                        <th style="width: 100px;">评论者ID</th>
+                        <th style="width: 100px;">被评论者ID</th>
+                        <th style="width: 150px;">评论内容</th>
+                        <th style="width: 150px;">发布时间</th>
+
+                    </tr>
+                    <?php
+                    header("Content-type:text/html;charset=utf-8");
+                    include_once("functions/database.php");
+                    $search_sql = "select * from comment order by publish_time desc";
+
+                    get_connection();
+                    $result_set = mysql_query($search_sql);
+                    close_connection();
+                    if(mysql_num_rows($result_set) == 0){
+                        exit("暂无记录!");
+                    }
+                    while ($row = mysql_fetch_array($result_set)) {
+                        ?>
+                        <tr>
+                            <td style="width: 100px;text-align: center;"><label><?php echo $row["commenter_id"] ?></label></td>
+                            <td style="width: 100px;text-align: center;"><label><?php echo $row["be_commenter_id"] ?></label></td>
+                            <td style="width: 150px;text-align: center;"><label><?php echo $row["comment_content"] ?></label></td>
+                            <td style="width: 150px;text-align: center;"><label><?php echo $row["publish_time"] ?> </label></td>
+                        </tr>
+                        <?php
+                    }
+                    ?>
+                </table>
+            </div>
+        </div>
         
     </div>
     <!--/main-->

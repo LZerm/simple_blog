@@ -13,9 +13,8 @@
 
 	//查看名字是否已存在
 	$sql = "select * from user where user_name = '$name'";
-	mysql_query($sql);
-	$result_rows = mysql_affected_rows();
-	if($result_rows == -1){
+	$result_rows = mysql_num_rows(mysql_query($sql));
+	if($result_rows > 0){
 		$message = "exist";
 	}
 	else if($password != $confirmPassword){

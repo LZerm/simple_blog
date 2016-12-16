@@ -1,3 +1,9 @@
+<?php
+    session_start();
+    if(!isset($_SESSION["admin_name"])){
+        header("Location:login.php");
+    }
+?>
 <!doctype html>
 <html>
 <head>
@@ -19,8 +25,8 @@
         </div>
         <div class="top-info-wrap">
             <ul class="top-info-list clearfix">
-                <li>管理员</li>
-                <li><a href="login.php">退出</a></li>
+                <li>管理员:<?php echo $_SESSION["admin_name"]; ?></li>
+                <li><a href="destory.php">退出</a></li>
             </ul>
         </div>
     </div>
@@ -46,20 +52,23 @@
     </div>
     <!--/sidebar-->
     <div class="main-wrap">
-
-    <div class="result-wrap">
-        <div class="result-title">
-            <h1>功能选择</h1>
+        <div class="crumb-wrap">
+            <div class="crumb-list"><i class="icon-font">&#xe06b;</i><span>欢迎光临。</span></div>
         </div>
-        <div class="result-content">
-            <div class="short-wrap">
-                <a href="addCategory.php"><i class="icon-font">&#xe001;</i>新增分类</a>
-                <a href="allCategory.php"><i class="icon-font">&#xe048;</i>所有分类</a>
-
+        <div class="result-wrap">
+            <div class="result-title">
+                <h1>快捷操作</h1>
+            </div>
+            <div class="result-content">
+                <div class="short-wrap">
+                    <a href="addArticle.php"><i class="icon-font">&#xe001;</i>新增文章</a>
+                    <a href="addCategory.php"><i class="icon-font">&#xe048;</i>新增分类</a>
+                    <a href="addUser.php"><i class="icon-font">&#xe041;</i>新增用户</a>
+                    <a href="#"><i class="icon-font">&#xe01e;</i>作品评论</a>
+                </div>
             </div>
         </div>
-    </div>
-
+        
     </div>
     <!--/main-->
 </div>
